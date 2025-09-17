@@ -27,7 +27,11 @@ public class TreatmentEntity {
     
     @ManyToOne
     @JoinColumn(name = "medication_id", nullable = false)
-    private MedicationEntity medication; 
+    private MedicationEntity medication;
+
+    
+    @Column(name = "dosage", nullable = false)
+    private String dosage;
 
     @Column(name = "start_date", nullable = false)
     private LocalDateTime startDate;
