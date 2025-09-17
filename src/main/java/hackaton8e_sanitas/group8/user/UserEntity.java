@@ -29,7 +29,7 @@ public class UserEntity {
     @Column(name = "password", nullable = false, length = 60)
     private String password;
 
-    @Column(name = "cardnumber", nullable = false, length = 60)
+    @Column(name = "cardnumber", nullable = true, length = 60)
     private String cardnumber;
 
     @CreationTimestamp
