@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
+import hackaton8e_sanitas.group8.medication.MedicationEntity;
 import hackaton8e_sanitas.group8.user.UserEntity;
 
 import java.time.LocalDateTime;
@@ -24,9 +25,9 @@ public class TreatmentEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
     
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "medication_id", nullable = false)
-    // private Medication medication; 
+    @ManyToOne
+    @JoinColumn(name = "medication_id", nullable = false)
+    private MedicationEntity medication; 
 
     @Column(name = "start_date", nullable = false)
     private LocalDateTime startDate;
