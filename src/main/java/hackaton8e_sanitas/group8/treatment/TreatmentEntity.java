@@ -33,6 +33,9 @@ public class TreatmentEntity {
     @Column(name = "dosage", nullable = false)
     private String dosage;
 
+    @Column(name = "indefinite", nullable = false)
+    private boolean indefinite;
+
     @Column(name = "start_date", nullable = false)
     private LocalDateTime startDate;
 
