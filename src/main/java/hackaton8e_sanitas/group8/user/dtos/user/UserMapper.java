@@ -1,5 +1,7 @@
 package hackaton8e_sanitas.group8.user.dtos.user;
 
+import hackaton8e_sanitas.group8.user.UserEntity;
+
 public class UserMapper {
 
     public static UserEntity toEntity(UserRequestDTO dto) {
