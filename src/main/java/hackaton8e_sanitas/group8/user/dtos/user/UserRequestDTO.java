@@ -16,8 +16,9 @@ public record UserRequestDTO(
         @NotBlank(message = "Email is required")
         @Email(message = "Email is not valid",
                 regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")
-        String email
+        String email,
 
+        String cardnumber
        
 ) {
 }
