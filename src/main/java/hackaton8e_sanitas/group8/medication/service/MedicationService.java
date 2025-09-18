@@ -1,17 +1,14 @@
 package hackaton8e_sanitas.group8.medication.service;
 
-import hackaton8e_sanitas.group8.medication.MedicationEntity;
-import hackaton8e_sanitas.group8.medication.repository.MedicationRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import hackaton8e_sanitas.group8.medication.dtos.MedicationRequestDTO;
+import hackaton8e_sanitas.group8.medication.dtos.MedicationResponseDTO;
 
-@Service
-@RequiredArgsConstructor
-public class MedicationService {
+import java.util.List;
 
-    private final MedicationRepository medicationRepository;
-
-    public MedicationEntity saveMedication(MedicationEntity medication) {
-        return medicationRepository.save(medication);
-    }
+public interface MedicationService {
+    List<MedicationResponseDTO> getAllMedicationsByUser(Long userId);
+    MedicationResponseDTO getMedicationById(Long userId, Long medicationId);
+    MedicationResponseDTO createMedication(Long userId, MedicationRequestDTO dto);
+    MedicationResponseDTO updateMedication(Long userId, Long medicationId, MedicationRequestDTO dto);
+    void deleteMedication(Long userId, Long medicationId);
 }

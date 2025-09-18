@@ -12,33 +12,33 @@ INSERT INTO users (id, username, name, email, password, cardnumber, created_at) 
 -- ==========================
 -- MEDICACIONES
 -- ==========================
-INSERT INTO medications (id_medication, name, description, quantity, units, type) VALUES
+INSERT INTO medications (id_medication, user_id, name, description, quantity, units, type) VALUES
 -- Ivan
-(1, 'Ibuprofeno', 'Antiinflamatorio en comprimidos', 20, 'mg', 'PASTILLAS'),
-(2, 'Paracetamol', 'Analgésico y antipirético', 15, 'mg', 'PASTILLAS'),
+(1, 1, 'Ibuprofeno', 'Antiinflamatorio en comprimidos', 20, 'mg', 'PASTILLAS'),
+(2, 1, 'Paracetamol', 'Analgésico y antipirético', 15, 'mg', 'PASTILLAS'),
 
 -- Débora
-(3, 'Amoxicilina', 'Antibiótico oral', 10, 'capsulas', 'SOBRES'),
-(4, 'Ventolin', 'Inhalador para asma', 2, 'sprays', 'GOTAS'),
+(3, 2, 'Amoxicilina', 'Antibiótico oral', 10, 'capsulas', 'SOBRES'),
+(4, 2, 'Ventolin', 'Inhalador para asma', 2, 'sprays', 'GOTAS'),
 
 -- Paola
-(5, 'Omeprazol', 'Protector gástrico', 30, 'mg', 'PASTILLAS'),
-(6, 'Loratadina', 'Antihistamínico oral', 20, 'mg', 'PASTILLAS'),
+(5, 3, 'Omeprazol', 'Protector gástrico', 30, 'mg', 'PASTILLAS'),
+(6, 3, 'Loratadina', 'Antihistamínico oral', 20, 'mg', 'PASTILLAS'),
 
 -- Alberto
-(7, 'Insulina', 'Inyección subcutánea', 5, 'ml', 'INYECCION'),
-(8, 'Vitamina C', 'Complemento vitamínico', 25, 'mg', 'PASTILLAS'),
+(7, 4, 'Insulina', 'Inyección subcutánea', 5, 'ml', 'INYECCION'),
+(8, 4, 'Vitamina C', 'Complemento vitamínico', 25, 'mg', 'PASTILLAS'),
 
 -- Esther
-(9, 'Clorfenamina', 'Tratamiento para alergias', 10, 'mg', 'PASTILLAS'),
-(10, 'Colirio', 'Gotas para ojos irritados', 1, 'frasco', 'GOTAS'),
+(9, 5, 'Clorfenamina', 'Tratamiento para alergias', 10, 'mg', 'PASTILLAS'),
+(10, 5, 'Colirio', 'Gotas para ojos irritados', 1, 'frasco', 'GOTAS'),
 
 -- Gabriela
-(11, 'Metformina', 'Tratamiento para la diabetes tipo 2', 20, 'mg', 'PASTILLAS'),
-(12, 'Hierro', 'Suplemento contra la anemia', 15, 'mg', 'PASTILLAS');
+(11, 6, 'Metformina', 'Tratamiento para la diabetes tipo 2', 20, 'mg', 'PASTILLAS'),
+(12, 6, 'Hierro', 'Suplemento contra la anemia', 15, 'mg', 'PASTILLAS');
 
 -- ==========================
--- TRATAMIENTOS (con dosage_unit)
+-- TRATAMIENTOS
 -- ==========================
 INSERT INTO treatments (id, user_id, medication_id, dosage, dosage_unit, indefinite, start_date, end_date, active) VALUES
 -- Ivan
