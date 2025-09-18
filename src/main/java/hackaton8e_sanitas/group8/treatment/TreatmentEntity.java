@@ -28,10 +28,12 @@ public class TreatmentEntity {
     @ManyToOne
     @JoinColumn(name = "medication_id", nullable = false)
     private MedicationEntity medication;
-
     
     @Column(name = "dosage", nullable = false)
     private String dosage;
+
+    @Column(name = "dosage_unit", nullable = false)
+    private Double dosageUnit;
 
     @Column(name = "indefinite", nullable = false)
     private boolean indefinite;
@@ -39,7 +41,7 @@ public class TreatmentEntity {
     @Column(name = "start_date", nullable = false)
     private LocalDateTime startDate;
 
-    @Column(name = "end_date")
+    @Column(name = "end_date", nullable = true)
     private LocalDateTime endDate;
 
     @Column(name = "active", nullable = false)

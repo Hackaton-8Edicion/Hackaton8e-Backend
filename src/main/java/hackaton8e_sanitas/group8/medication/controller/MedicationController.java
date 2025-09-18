@@ -1,5 +1,7 @@
-package hackaton8e_sanitas.group8.medication;
+package hackaton8e_sanitas.group8.medication.controller;
 
+import hackaton8e_sanitas.group8.medication.MedicationEntity;
+import hackaton8e_sanitas.group8.medication.service.MedicationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

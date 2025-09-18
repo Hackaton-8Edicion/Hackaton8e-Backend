@@ -1,4 +1,4 @@
-package hackaton8e_sanitas.group8.treatment;
+package hackaton8e_sanitas.group8.treatment.controller;
 
 import hackaton8e_sanitas.group8.treatment.dtos.TreatmentRequestDTO;
 import hackaton8e_sanitas.group8.treatment.dtos.TreatmentResponseDTO;
@@ -18,7 +18,7 @@ public class TreatmentController {
         this.treatmentService = treatmentService;
     }
 
-    @GetMapping
+    @GetMapping("/user/{userId}")
     public ResponseEntity<List<TreatmentResponseDTO>> getAllTreatmentsByUser(@PathVariable Long userId) {
         return ResponseEntity.ok(treatmentService.getAllTreatmentsByUser(userId));
     }
@@ -28,7 +28,7 @@ public class TreatmentController {
         return ResponseEntity.ok(treatmentService.getTreatmentById(treatmentId));
     }
 
-    @PostMapping
+    @PostMapping("/user/{userId}")
     public ResponseEntity<TreatmentResponseDTO> createTreatment(@RequestBody TreatmentRequestDTO treatmentDto, @PathVariable Long userId) {
         return ResponseEntity.ok(treatmentService.createTreatment(treatmentDto, userId));
     }

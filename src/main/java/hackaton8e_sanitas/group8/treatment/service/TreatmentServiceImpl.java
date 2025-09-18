@@ -1,32 +1,31 @@
 package hackaton8e_sanitas.group8.treatment.service;
 
 import hackaton8e_sanitas.group8.medication.MedicationEntity;
-import hackaton8e_sanitas.group8.medication.MedicationRepository;
+import hackaton8e_sanitas.group8.medication.repository.MedicationRepository;
 import hackaton8e_sanitas.group8.treatment.TreatmentEntity;
-import hackaton8e_sanitas.group8.treatment.TreatmentMapper;
+import hackaton8e_sanitas.group8.treatment.dtos.TreatmentMapper;
 import hackaton8e_sanitas.group8.treatment.dtos.TreatmentRequestDTO;
 import hackaton8e_sanitas.group8.treatment.dtos.TreatmentResponseDTO;
 import hackaton8e_sanitas.group8.treatment.repository.TreatmentRepository;
 import hackaton8e_sanitas.group8.user.UserEntity;
 import hackaton8e_sanitas.group8.user.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
+@Transactional
 public class TreatmentServiceImpl implements TreatmentService {
 
     private final TreatmentRepository treatmentRepository;
     private final UserRepository userRepository;
     private final MedicationRepository medicationRepository;
 
-    public TreatmentServiceImpl(TreatmentRepository treatmentRepository, UserRepository userRepository, MedicationRepository medicationRepository) {
-        this.treatmentRepository = treatmentRepository;
-        this.userRepository = userRepository;
-        this.medicationRepository = medicationRepository;
-    }
 
     @Override
     public List<TreatmentResponseDTO> getAllTreatmentsByUser(Long userId) {
