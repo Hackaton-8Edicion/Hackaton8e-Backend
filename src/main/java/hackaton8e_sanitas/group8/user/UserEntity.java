@@ -1,5 +1,6 @@
 package hackaton8e_sanitas.group8.user;
 
+import hackaton8e_sanitas.group8.medication.MedicationEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -17,6 +18,9 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MedicationEntity> medications;
+
     @Column(name = "username", nullable = false, unique = true, length = 15)
     private String username;
 
@@ -29,7 +33,7 @@ public class UserEntity {
     @Column(name = "password", nullable = false, length = 60)
     private String password;
 
-    @Column(name = "cardnumber", nullable = false, length = 60)
+    @Column(name = "cardnumber", nullable = true, length = 60)
     private String cardnumber;
 
     @CreationTimestamp
