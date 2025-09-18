@@ -64,8 +64,8 @@ public class TreatmentServiceImpl implements TreatmentService {
         // Actualizar campos
         existingTreatment.setDosage(String.valueOf(treatmentDto.dosage()));
         existingTreatment.setIndefinite(treatmentDto.indefinite());
-        existingTreatment.setStartDate(treatmentDto.startDate() != null ? treatmentDto.startDate().atStartOfDay() : null);
-        existingTreatment.setEndDate(treatmentDto.endDate() != null ? treatmentDto.endDate().atStartOfDay() : null);
+        existingTreatment.setStartDate(treatmentDto.startDate());
+        existingTreatment.setEndDate(treatmentDto.endDate());
         existingTreatment.setActive(treatmentDto.active());
 
         // Si el ID del medicamento cambia, actualizar la relación

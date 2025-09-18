@@ -3,13 +3,11 @@ package hackaton8e_sanitas.group8.treatment;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 
 import hackaton8e_sanitas.group8.medication.MedicationEntity;
 import hackaton8e_sanitas.group8.user.UserEntity;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "treatments")
@@ -39,10 +37,10 @@ public class TreatmentEntity {
     private boolean indefinite;
 
     @Column(name = "start_date", nullable = false)
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date", nullable = true)
-    private LocalDateTime endDate;
+    private LocalDate endDate;
 
     @Column(name = "active", nullable = false)
     private boolean active;

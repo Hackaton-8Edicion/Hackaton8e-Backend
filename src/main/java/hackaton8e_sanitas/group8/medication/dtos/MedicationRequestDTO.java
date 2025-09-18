@@ -14,14 +14,10 @@ public record MedicationRequestDTO(
     @Size(max = 255, message = "Description cannot exceed 255 characters")
     String description,
 
-    @NotNull(message = "Quantity is required")
-    @Positive(message = "Quantity must be greater than 0")
     Integer quantity,
 
-    @NotBlank(message = "Units are required (e.g., mg, ml, tablets)")
     String units,
 
-    @NotNull(message = "Medication type is required")
     MedicationType type
 ) {
 

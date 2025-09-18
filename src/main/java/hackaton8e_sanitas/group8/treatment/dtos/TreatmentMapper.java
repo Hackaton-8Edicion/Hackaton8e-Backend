@@ -12,8 +12,8 @@ public class TreatmentMapper {
         }
 
      
-        java.time.LocalDate startDate = entity.getStartDate() != null ? entity.getStartDate().toLocalDate() : null;
-        java.time.LocalDate endDate = entity.getEndDate() != null ? entity.getEndDate().toLocalDate() : null;
+//        java.time.LocalDate startDate = entity.getStartDate() != null ? entity.getStartDate().toLocalDate() : null;
+//        java.time.LocalDate endDate = entity.getEndDate() != null ? entity.getEndDate().toLocalDate() : null;
 
 
         Long medicationId = entity.getMedication() != null ? entity.getMedication().getId_medication() : null;
@@ -24,8 +24,8 @@ public class TreatmentMapper {
                 entity.getDosage(),
                 entity.getDosageUnit(),
                 entity.isIndefinite(),
-                startDate,
-                endDate,
+                entity.getStartDate(),
+                entity.getEndDate(),
                 entity.isActive()
         );
     }
@@ -36,8 +36,8 @@ public class TreatmentMapper {
         }
 
       
-        java.time.LocalDateTime startDateTime = dto.startDate() != null ? dto.startDate().atStartOfDay() : null;
-        java.time.LocalDateTime endDateTime = dto.endDate() != null ? dto.endDate().atStartOfDay() : null;
+//        java.time.LocalDateTime startDateTime = dto.startDate() != null ? dto.startDate().atStartOfDay() : null;
+//        java.time.LocalDateTime endDateTime = dto.endDate() != null ? dto.endDate().atStartOfDay() : null;
 
         return TreatmentEntity.builder()
                 .user(user)
@@ -45,8 +45,8 @@ public class TreatmentMapper {
                 .dosage(dto.dosage())
                 .dosageUnit(dto.dosageUnit())
                 .indefinite(dto.indefinite())
-                .startDate(startDateTime)
-                .endDate(endDateTime)
+                .startDate(dto.startDate())
+                .endDate(dto.endDate())
                 .active(dto.active())
                 .build();
     }
