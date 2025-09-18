@@ -18,7 +18,8 @@ public class UserMapper {
         return new UserRequestDTO(
                 entity.getName(),
                 entity.getUsername(),
-                entity.getEmail()
+                entity.getEmail(),
+                entity.getCardnumber()
         );
     }
 }
