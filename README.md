@@ -6,24 +6,22 @@ This backend provides a secure and scalable system that helps users keep track o
 ![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.4-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
 ![Spring Security](https://img.shields.io/badge/Spring%20Security-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 
 ---
 
 ## 📋 Table of Contents
-- [🎯 Project Overview](#project-overview)
-- [✨ Features](#features)
-- [🚀 Getting Started](#getting-started)
-- [⚙️ Installation](#installation)
-- [🏃 Running the Application](#running-the-application)
-- [🌐 API Endpoints](#api-endpoints)
-- [🔧 Technologies](#technologies)
-- [📊 Architecture](#architecture)
-- [🧪 Tests](#tests)
-- [🔄 Automation](#automation)
-- [🤝 Contributing](#contributing)
-- [👩‍💻 Authors](#authors)
+- [🎯 Project Overview](#-project-overview)
+- [✨ Features](#-features-implemented)
+- [🚀 Getting Started](#-getting-started)
+- [⚙️ Installation](#-installation)
+- [🏃 Running the Application](#-running-the-application)
+- [🌐 API Endpoints](#endpoints-implemented)
+- [📖 API Documentation (Swagger)](#api-documentation-with-swagger)
+- [🔧 Technologies](#-technologies)
+- [🧪 Tests](#-tests)
+- [👥 Team Members](#-team-members)
 
 ---
 
@@ -38,30 +36,30 @@ Managing medication routines is a daily challenge. Users often rely on fragmente
 
 ---
 
-## ✨ Features
-- 👤 User registration & login with **JWT authentication**.
+## ✨ Features implemented
+- 👤 User registration & login.
+- 👤 User can consult their profile and update it. 
 - 💊 CRUD operations for medications.
+- ⏰ CRUD operations for treatments.
+
+**Future Enhancements**
 - ⏰ Schedule management (daily/weekly routines).
 - ✅ Track whether medication was taken or missed.
 - 📊 Dashboard endpoint to view today’s doses.
 - 🔒 Role-based access (future enhancement: Admin/User separation).
-
-**Future Enhancements**
 - 🔔 Push notifications & reminders.
-- 📈 Analytics of adherence trends.
-- 🌐 Multi-language support.
+- 📈 History of treatments.
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
-Make sure you have installed:
-- **Java 21+** — [Download](https://www.oracle.com/java/technologies/javase/jdk21-archive-downloads.html)
-- **Maven 3.6+** — [Download](https://maven.apache.org/download.cgi)
-- **PostgreSQL 15+** — [Download](https://www.postgresql.org/download/)
-- **Docker (optional)** — [Download](https://www.docker.com/get-started)
-- **Git** — [Download](https://git-scm.com/downloads)
+### Stack used
+
+- **Java 21+**
+- **Maven 3.6+**
+- **MySQL**
+- **Git**
 
 ### Quick Start
 ```bash
@@ -86,28 +84,12 @@ The API will be available at 👉 http://localhost:8080
 ```
 
 ### 2. Configure Database
+Create a MySQL database called "group8" and create an .env file with the following data:
 ```yaml
-Create a MySQL database and edit `src/main/resources/application.yml`:
-spring:
-datasource:
-url: jdbc:postgresql://localhost:5432/medication_db
-username: your_username
-password: your_password
-jpa:
-hibernate:
-ddl-auto: update
-show-sql: true
-properties:
-hibernate:
-dialect: org.hibernate.dialect.PostgreSQLDialect
-format_sql: true
-
-jwt:
-secret: your_jwt_secret_key
-expiration: 86400000 # 24 hours
-
-server:
-port: 8080
+  DB_URL=jdbc:mysql://localhost:3306/group8
+  DB_USERNAME=your_username
+  DB_PASSWORD=your_password
+  SERVER_PORT=8080
 ```
 
 ## 🏃‍♂️ Running the Application
@@ -117,14 +99,48 @@ port: 8080
 ### 🔧 Technologies
 - **Java 21** - Core programming language
 - **Spring Boot 3.5.4** - Application framework
-- **Spring Security + JWT** - Provides authentication and authorization
+- **Spring Security** - Provides authentication
 - **Spring Data JPA + Hibernate** - Data persistence and ORM
 - **MySQL 8.0+** - Relational database
-- **GitHub Actions (CI/CD)** - Continuous integration and deployment
 - **JUnit 5 + Mockito** - Unit and integration testing
 
 ---
 
+## API Documentation with Swagger
+
+We integrated **Swagger (Springdoc OpenAPI)** to automatically generate interactive documentation for our REST API.  
+This allows developers and testers to explore endpoints, send requests directly from the browser, and authenticate with **JWT tokens**.
+
+👉 Swagger UI is available at:
+```bash
+  http://localhost:8080/swagger-ui.html
+```
+
+## Endpoints Implemented
+
+### 🔑 Authentication
+- **POST** `/api/auth/register` → Register a new user
+- **POST** `/api/auth/login` → Login
+
+### 👤 Users
+- **GET** `/api/users/{id}` → Get user by ID
+- **PUT** `/api/users/{id}` → Update user data
+
+### 💊 Medications
+- **GET** `/api/users/{userId}/medications` → Get all medications for a user
+- **GET** `/api/users/{userId}/medications/{medicationId}` → Get one medication by ID
+- **POST** `/api/users/{userId}/medications` → Create a new medication
+- **PUT** `/api/users/{userId}/medications/{medicationId}` → Update an existing medication
+- **DELETE** `/api/users/{userId}/medications/{medicationId}` → Delete a medication
+
+### 🩺 Treatments
+- **GET** `/api/users/{userId}/treatments` → Get all treatments for a user
+- **GET** `/api/users/{userId}/treatments/{treatmentId}` → Get one treatment by ID
+- **POST** `/api/users/{userId}/treatments` → Create a new treatment
+- **PUT** `/api/users/{userId}/treatments/{treatmentId}` → Update an existing treatment
+- **DELETE** `/api/users/{userId}/treatments/{treatmentId}` → Delete a treatment
+
+---
 
 ### 🧪 Tests
 - **Unit Tests** - Test business logic in services
@@ -138,21 +154,6 @@ port: 8080
 - **Coverage Report** - `target/site/jacoco/index.html`
 
 ---
-### 🔄 Automation
-- **GitHub Actions** - Automates CI/CD pipelines
-- **Automated test execution** - Runs unit and integration tests
-- **Conventional commit validation** - Ensures commit message standards
-
----
-
-### 🤝 Contributing
-- **feat:** Add new features
-- **fix:** Bug fixes
-- **docs:** Documentation updates
-- **style:** Code style changes
-- **refactor:** Code refactoring
-- **test:** Add or update tests
-- **chore:** Maintenance tasks
 
 ## 👥 Team Members
 <table>
