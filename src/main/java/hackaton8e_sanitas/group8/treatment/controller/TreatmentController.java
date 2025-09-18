@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("${api-endpoint}/treatments")
+@RequestMapping("${api-endpoint}/users/{userId}/treatments")
 public class TreatmentController {
 
     private final TreatmentService treatmentService;
@@ -18,7 +18,7 @@ public class TreatmentController {
         this.treatmentService = treatmentService;
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("")
     public ResponseEntity<List<TreatmentResponseDTO>> getAllTreatmentsByUser(@PathVariable Long userId) {
         return ResponseEntity.ok(treatmentService.getAllTreatmentsByUser(userId));
     }
@@ -28,7 +28,7 @@ public class TreatmentController {
         return ResponseEntity.ok(treatmentService.getTreatmentById(treatmentId));
     }
 
-    @PostMapping("/user/{userId}")
+    @PostMapping("")
     public ResponseEntity<TreatmentResponseDTO> createTreatment(@RequestBody TreatmentRequestDTO treatmentDto, @PathVariable Long userId) {
         return ResponseEntity.ok(treatmentService.createTreatment(treatmentDto, userId));
     }
