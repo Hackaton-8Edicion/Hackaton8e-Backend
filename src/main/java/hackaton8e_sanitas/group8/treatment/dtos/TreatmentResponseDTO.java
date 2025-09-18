@@ -5,7 +5,8 @@ import java.time.LocalDate;
 public record TreatmentResponseDTO(
         Long id_treatment,
         Long medication_id,
-        int dosage,
+        String dosage,
+        Double dosage_unit,
         boolean indefinite,
         LocalDate startDate,
         LocalDate endDate,

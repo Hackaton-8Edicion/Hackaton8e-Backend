@@ -4,7 +4,8 @@ import java.time.LocalDate;
 
 public record TreatmentRequestDTO(
         Long medicationId,
-        int dosage,
+        String dosage,
+        Double dosageUnit,
         boolean indefinite,
         LocalDate startDate,
         LocalDate endDate,
